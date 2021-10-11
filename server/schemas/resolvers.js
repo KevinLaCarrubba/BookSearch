@@ -37,6 +37,15 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async(parent, args),
+    saveBook: async (parent, args, context) => {
+      if (context.user) {
+        const bookSave = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { savedBooksL: book } },
+          { new: true }
+        );
+        return bookSave;
+      }
+    },
   },
 };
