@@ -18,4 +18,9 @@ export const typeDefs = gql`
     bookCount: Int!
     savedBooks: [Book]
   }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
 `;
