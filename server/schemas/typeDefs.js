@@ -6,9 +6,9 @@ const typeDefs = gql`
     bookId: ID!
     authors: [String]
     description: String!
-    title: String!
-    image: String
     link: String
+    image: String
+    title: String!
   }
 
   type User {
@@ -25,7 +25,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    login: User
+    me: User
   }
 
   type Mutation {
