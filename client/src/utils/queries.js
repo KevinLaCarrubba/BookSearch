@@ -1,18 +1,18 @@
 import { gql } from "@apollo/client";
 
-export const GET_LOGGEDIN = gql`
-  query login {
-    login {
+export const QUERY_ME = gql`
+  query {
+    me {
       _id
       username
-      bookCount
+      email
       savedBooks {
         bookId
         authors
         description
-        title
-        image
         link
+        image
+        title
       }
     }
   }
