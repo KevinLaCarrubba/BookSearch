@@ -14,7 +14,7 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async function (parent, args) {
+    addUser: async function (parent, { username, email, password }) {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
 
@@ -38,7 +38,10 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
+        const book = { ...args };
+        console.log(book);
         const bookSave = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { savedBooks: book } },
