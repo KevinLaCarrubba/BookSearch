@@ -40,15 +40,15 @@ const LoginForm = () => {
       const { data } = await login({
         variables: { ...userFormData },
       });
+      console.log("handleFromSubmit: data:", data);
 
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      // setShowAlert(true);
     }
 
     setUserFormData({
-      username: "",
       email: "",
       password: "",
     });
